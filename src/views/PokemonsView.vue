@@ -7,12 +7,14 @@ getPokemons('https://pokeapi.co/api/v2/pokemon');
 
 <template>
     <div v-if="pokemons">
+
         <ul>
             <li v-for="pokemon in pokemons.results" :key="pokemon.url">
                 <!-- Rutas dinamincas: para usarlas debemos utilizar routerLink -->
                 <RouterLink :to="`./pokemons/${pokemon.name}`">{{ pokemon.name }}</RouterLink>
             </li>
         </ul>
+
         <button @click="getPokemons(pokemons.previous)" class="btn btn-outline-primary" :disabled="pokemons.previous == null">Prev</button>
         <button @click="getPokemons(pokemons.next)" class="btn btn-outline-primary" :disabled="pokemons.next == null">Next</button>
     </div>
